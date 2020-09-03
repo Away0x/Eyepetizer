@@ -4,13 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import com.away0x.eyepetizer.R
 import com.away0x.eyepetizer.event.MessageEvent
-import com.away0x.eyepetizer.utils.ActivityCollector
-import com.away0x.eyepetizer.utils.logD
+import com.away0x.eyepetizer.common.utils.ActivityCollector
+import com.away0x.eyepetizer.common.utils.logD
 import com.gyf.immersionbar.ImmersionBar
 import com.umeng.analytics.MobclickAgent
 import org.greenrobot.eventbus.EventBus

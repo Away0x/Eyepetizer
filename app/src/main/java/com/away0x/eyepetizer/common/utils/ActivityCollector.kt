@@ -1,4 +1,4 @@
-package com.away0x.eyepetizer.utils
+package com.away0x.eyepetizer.common.utils
 
 import android.app.Activity
 import java.lang.ref.WeakReference

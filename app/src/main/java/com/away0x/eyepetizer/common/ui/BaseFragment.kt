@@ -6,16 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewStub
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.away0x.eyepetizer.R
 import com.away0x.eyepetizer.common.callback.RequestLifecycle
 import com.away0x.eyepetizer.event.MessageEvent
-import com.away0x.eyepetizer.utils.logD
+import com.away0x.eyepetizer.common.utils.logD
 import com.umeng.analytics.MobclickAgent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

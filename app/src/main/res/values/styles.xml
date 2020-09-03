@@ -9,4 +9,13 @@
         <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
+    <style name="Eyepetizer.SplashActivity">
+        <!--
+            windowBackground: 一般用于activity启动的时候，默认的那个背景图，如果你不设置这个属性，那么你的应用启动的时候，会白屏一段时间
+            windowFullscreen: 全屏
+        -->
+        <item name="android:windowBackground">@drawable/bg_splash_background</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.away0x.eyepetizer.utils
+package com.away0x.eyepetizer.common.utils
 
 import android.util.Log
 import com.away0x.eyepetizer.BuildConfig
