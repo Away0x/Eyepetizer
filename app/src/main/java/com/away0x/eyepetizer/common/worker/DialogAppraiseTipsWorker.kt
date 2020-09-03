@@ -18,10 +18,16 @@ class DialogAppraiseTipsWorker(val context: Context, parms: WorkerParameters) : 
 
     override fun doWork(): Result {
         return if (isNeedShowDialog) {
-            logD(TAG, "${System.currentTimeMillis()},execute doWork function,result : retry")
+            logD(
+                TAG,
+                "${System.currentTimeMillis()},execute doWork function,result : retry"
+            )
             Result.retry()
         } else {
-            logD(TAG, "${System.currentTimeMillis()},execute doWork function,result : success")
+            logD(
+                TAG,
+                "${System.currentTimeMillis()},execute doWork function,result : success"
+            )
             Result.success()
         }
     }

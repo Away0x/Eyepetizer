@@ -109,7 +109,11 @@ object GlobalUtil {
                 try {
                     deviceId = Settings.Secure.getString(EyepetizerApplication.context.contentResolver, Settings.Secure.ANDROID_ID)
                 } catch (e: Exception) {
-                    logW(TAG, "get android_id with error", e)
+                    logW(
+                        TAG,
+                        "get android_id with error",
+                        e
+                    )
                 }
                 if (!TextUtils.isEmpty(deviceId) && deviceId!!.length < 255) {
                     deviceSerial = deviceId

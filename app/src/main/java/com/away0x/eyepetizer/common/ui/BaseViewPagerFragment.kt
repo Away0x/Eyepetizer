@@ -66,7 +66,6 @@ abstract class BaseViewPagerFragment : BaseFragment() {
         })
         pageChangeCallback = PageChangeCallback()
         viewPager?.registerOnPageChangeCallback(pageChangeCallback!!)
-        Log.d("asd", 123.toString())
     }
 
     inner class PageChangeCallback : ViewPager2.OnPageChangeCallback() {

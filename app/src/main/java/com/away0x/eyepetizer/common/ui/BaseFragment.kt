@@ -10,7 +10,6 @@ import android.widget.ProgressBar
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.away0x.eyepetizer.R
 import com.away0x.eyepetizer.common.callback.RequestLifecycle
 import com.away0x.eyepetizer.event.MessageEvent
 import com.away0x.eyepetizer.common.utils.logD
@@ -41,72 +40,111 @@ open class BaseFragment : Fragment(), RequestLifecycle {
         super.onAttach(context)
         // 缓存当前依附的activity
         activity = getActivity()!!
-        logD(TAG, "BaseFragment-->onAttach()")
+        logD(
+            TAG,
+            "BaseFragment-->onAttach()"
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        logD(TAG, "BaseFragment-->onCreate()")
+        logD(
+            TAG,
+            "BaseFragment-->onCreate()"
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        logD(TAG, "BaseFragment-->onCreateView()")
+        logD(
+            TAG,
+            "BaseFragment-->onCreateView()"
+        )
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        logD(TAG, "BaseFragment-->onViewCreated()")
+        logD(
+            TAG,
+            "BaseFragment-->onViewCreated()"
+        )
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        logD(TAG, "BaseFragment-->onActivityCreated()")
+        logD(
+            TAG,
+            "BaseFragment-->onActivityCreated()"
+        )
     }
 
     override fun onStart() {
         super.onStart()
-        logD(TAG, "BaseFragment-->onStart()")
+        logD(
+            TAG,
+            "BaseFragment-->onStart()"
+        )
     }
 
     override fun onResume() {
         super.onResume()
-        logD(TAG, "BaseFragment-->onResume()")
+        logD(
+            TAG,
+            "BaseFragment-->onResume()"
+        )
         MobclickAgent.onPageStart(javaClass.name)
         //当Fragment在屏幕上可见并且没有加载过数据时调用
         if (!mHasLoadedData) {
             loadDataOnce()
-            logD(TAG, "BaseFragment-->loadDataOnce()")
+            logD(
+                TAG,
+                "BaseFragment-->loadDataOnce()"
+            )
             mHasLoadedData = true
         }
     }
 
     override fun onPause() {
         super.onPause()
-        logD(TAG, "BaseFragment-->onPause()")
+        logD(
+            TAG,
+            "BaseFragment-->onPause()"
+        )
         MobclickAgent.onPageEnd(javaClass.name)
     }
 
     override fun onStop() {
         super.onStop()
-        logD(TAG, "BaseFragment-->onStop()")
+        logD(
+            TAG,
+            "BaseFragment-->onStop()"
+        )
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        logD(TAG, "BaseFragment-->onDestroyView()")
+        logD(
+            TAG,
+            "BaseFragment-->onDestroyView()"
+        )
         EventBus.getDefault().unregister(this)
         if (rootView?.parent != null) (rootView?.parent as ViewGroup).removeView(rootView)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        logD(TAG, "BaseFragment-->onDestroy()")
+        logD(
+            TAG,
+            "BaseFragment-->onDestroy()"
+        )
     }
 
     override fun onDetach() {
         super.onDetach()
-        logD(TAG, "BaseFragment-->onDetach()")
+        logD(
+            TAG,
+            "BaseFragment-->onDetach()"
+        )
     }
 
     /**
@@ -137,7 +175,10 @@ open class BaseFragment : Fragment(), RequestLifecycle {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     open fun onMessageEvent(messageEvent: MessageEvent) {
-        logD(TAG, "BaseFragment-->onMessageEvent()")
+        logD(
+            TAG,
+            "BaseFragment-->onMessageEvent()"
+        )
     }
 
     /**TODO:
@@ -146,7 +187,10 @@ open class BaseFragment : Fragment(), RequestLifecycle {
      * @return  Fragment中inflate出来的View实例原封不动返回。
      */
     fun onCreateView(view: View): View {
-        logD(TAG, "BaseFragment-->onCreateView()")
+        logD(
+            TAG,
+            "BaseFragment-->onCreateView()"
+        )
         rootView = view
         // loading = view.findViewById(R.id.loading)
         if (!EventBus.getDefault().isRegistered(this)) EventBus.getDefault().register(this)

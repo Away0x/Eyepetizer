@@ -36,59 +36,89 @@ open class BaseActivity : AppCompatActivity() {
         activityWR = WeakReference(activity!!)
         ActivityCollector.pushTask(activityWR)
 
-        logD(TAG, "BaseActivity-->onCreate()")
+        logD(
+            TAG,
+            "BaseActivity-->onCreate()"
+        )
         EventBus.getDefault().register(this)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        logD(TAG, "BaseActivity-->onSaveInstanceState()")
+        logD(
+            TAG,
+            "BaseActivity-->onSaveInstanceState()"
+        )
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        logD(TAG, "BaseActivity-->onRestoreInstanceState()")
+        logD(
+            TAG,
+            "BaseActivity-->onRestoreInstanceState()"
+        )
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        logD(TAG, "BaseActivity-->onNewIntent()")
+        logD(
+            TAG,
+            "BaseActivity-->onNewIntent()"
+        )
     }
 
     override fun onRestart() {
         super.onRestart()
-        logD(TAG, "BaseActivity-->onRestart()")
+        logD(
+            TAG,
+            "BaseActivity-->onRestart()"
+        )
     }
 
     override fun onStart() {
         super.onStart()
-        logD(TAG, "BaseActivity-->onStart()")
+        logD(
+            TAG,
+            "BaseActivity-->onStart()"
+        )
     }
 
     override fun onResume() {
         super.onResume()
-        logD(TAG, "BaseActivity-->onResume()")
+        logD(
+            TAG,
+            "BaseActivity-->onResume()"
+        )
         isActive = true
         MobclickAgent.onResume(this)
     }
 
     override fun onPause() {
         super.onPause()
-        logD(TAG, "BaseActivity-->onPause()")
+        logD(
+            TAG,
+            "BaseActivity-->onPause()"
+        )
         isActive = false
         MobclickAgent.onPause(this)
     }
 
     override fun onStop() {
         super.onStop()
-        logD(TAG, "BaseActivity-->onStop()")
+        logD(
+            TAG,
+            "BaseActivity-->onStop()"
+        )
     }
 
     override fun onDestroy() {
         super.onDestroy()
         activity = null
         ActivityCollector.removeTask(activityWR)
-        logD(TAG, "BaseActivity-->onDestroy()")
+        logD(
+            TAG,
+            "BaseActivity-->onDestroy()"
+        )
         EventBus.getDefault().unregister(this)
     }
 

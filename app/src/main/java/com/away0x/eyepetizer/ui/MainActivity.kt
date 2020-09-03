@@ -3,18 +3,23 @@ package com.away0x.eyepetizer.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
 import com.away0x.eyepetizer.R
 import com.away0x.eyepetizer.common.extension.setOnClickListener
 import com.away0x.eyepetizer.common.extension.showToast
 import com.away0x.eyepetizer.common.ui.BaseActivity
 import com.away0x.eyepetizer.common.utils.GlobalUtil
+import com.away0x.eyepetizer.common.utils.logD
+import com.away0x.eyepetizer.common.worker.DialogAppraiseTipsWorker
 import com.away0x.eyepetizer.event.MessageEvent
 import com.away0x.eyepetizer.event.RefreshEvent
 import com.away0x.eyepetizer.event.SwitchPagesEvent
 import com.away0x.eyepetizer.ui.community.CommunityFragment
+import com.away0x.eyepetizer.ui.community.commend.CommendFragment as CommunityCommendFragment
 import com.away0x.eyepetizer.ui.home.HomeFragment
 import com.away0x.eyepetizer.ui.login.LoginActivity
 import com.away0x.eyepetizer.ui.mine.MineFragment
@@ -47,7 +52,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupViews() {
-        super.setupViews()
+        observe()
 
         setOnClickListener(btnHomePage, btnCommunity, ivRelease, btnNotification, btnMine) {
             when (this) {
@@ -86,6 +91,12 @@ class MainActivity : BaseActivity() {
 
     override fun onMessageEvent(messageEvent: MessageEvent) {
         super.onMessageEvent(messageEvent)
+        when {
+            messageEvent is SwitchPagesEvent && CommunityCommendFragment::class.java == messageEvent.activityClass -> {
+                btnCommunity.performClick()
+            }
+            else -> {}
+        }
     }
 
     private fun setTabSelection(index: Int) {
@@ -182,6 +193,20 @@ class MainActivity : BaseActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    private fun observe() {
+        WorkManager.getInstance(this).getWorkInfoByIdLiveData(DialogAppraiseTipsWorker.showDialogWorkRequest.id).observe(this, Observer { workInfo ->
+            logD(TAG, "observe: workInfo.state = ${workInfo.state}")
+            if (workInfo.state == WorkInfo.State.SUCCEEDED) {
+                WorkManager.getInstance(this).cancelAllWork()
+            } else if (workInfo.state == WorkInfo.State.RUNNING) {
+                if (isActive) {
+                    DialogAppraiseTipsWorker.showDialog(this)
+                    WorkManager.getInstance(this).cancelAllWork()
+                }
+            }
+        })
     }
 
 }
