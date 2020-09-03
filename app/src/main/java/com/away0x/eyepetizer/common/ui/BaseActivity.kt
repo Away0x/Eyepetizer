@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import com.away0x.eyepetizer.R
@@ -138,10 +140,11 @@ open class BaseActivity : AppCompatActivity() {
      * TODO:
      */
     protected open fun setupViews() {
-//        val navigateBefore = findViewById<ImageView>(R.id.ivNavigateBefore)
-//        val tvTitle = findViewById<TextView>(R.id.tvTitle)
-//        navigateBefore?.setOnClickListener { finish() }
-//        tvTitle?.isSelected = true  //获取焦点，实现跑马灯效果。
+        // 返回按钮
+        val navigateBefore = findViewById<ImageView>(R.id.ivNavigateBefore)
+        val tvTitle = findViewById<TextView>(R.id.tvTitle)
+        navigateBefore?.setOnClickListener { finish() }
+        tvTitle?.isSelected = true  //获取焦点，实现跑马灯效果。
     }
 
     /**
