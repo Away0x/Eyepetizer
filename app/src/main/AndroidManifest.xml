@@ -21,12 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/Eyepetizer"
         tools:targetApi="q">
+        <activity android:name=".ui.login.LoginActivity"></activity>
 
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false" />
-
-        <!-- 关于全面屏与刘海，状态栏配置相关，详见: https://github.com/gyf-dev/ImmersionBar -->
+            android:required="false" /> <!-- 关于全面屏与刘海，状态栏配置相关，详见: https://github.com/gyf-dev/ImmersionBar -->
         <meta-data
             android:name="android.max_aspect"
             android:value="2.4" />
@@ -36,21 +35,22 @@
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" /> <!-- 适配小米（xiaomi）刘海屏 -->
-
-        <activity android:name=".ui.SplashActivity"
+        <activity
+            android:name=".ui.SplashActivity"
             android:theme="@style/Eyepetizer.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <!--
             android:configChanges: 捕获手机状态的改变。使用该属性后，程序运行时如果配置发生变化时，不会重新启动 activity，
                 而是会调用 onConfigurationChanged
             android:screenOrientation="portrait": 限制只纵向显示屏幕
         -->
-        <activity android:name=".ui.MainActivity"
+        <activity
+            android:name=".ui.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait" />
     </application>

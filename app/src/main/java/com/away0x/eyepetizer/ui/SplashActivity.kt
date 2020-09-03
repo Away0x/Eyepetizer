@@ -55,8 +55,8 @@ class SplashActivity : BaseActivity() {
         // 时间到了，跳转页面
         CoroutineScope(job).launch {
             delay(splashDuration)
-//            MainActivity.start(this@SplashActivity)
-//            finish()
+            MainActivity.start(this@SplashActivity)
+            finish()
         }
 
         isFirstEntryApp = false

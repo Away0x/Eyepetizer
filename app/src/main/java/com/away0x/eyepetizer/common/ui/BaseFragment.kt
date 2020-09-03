@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.away0x.eyepetizer.R
 import com.away0x.eyepetizer.common.callback.RequestLifecycle
 import com.away0x.eyepetizer.event.MessageEvent
 import com.away0x.eyepetizer.common.utils.logD
@@ -146,8 +147,8 @@ open class BaseFragment : Fragment(), RequestLifecycle {
      */
     fun onCreateView(view: View): View {
         logD(TAG, "BaseFragment-->onCreateView()")
-//        rootView = view
-//        loading = view.findViewById(R.id.loading)
+        rootView = view
+        // loading = view.findViewById(R.id.loading)
         if (!EventBus.getDefault().isRegistered(this)) EventBus.getDefault().register(this)
         return view
     }
